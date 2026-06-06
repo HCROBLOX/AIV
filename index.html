@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neon AI</title>
+<title>🌧️Rain AI</title>
 
 <style>
 *{
@@ -134,7 +134,7 @@ border-radius:50px;
 <div class="container">
 
 <div class="header">
-✨ Neon AI
+🌧️Rain AI
 </div>
 
 <div class="chat" id="chat"></div>
@@ -159,7 +159,35 @@ const API_KEY = "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";
 let messages =
 JSON.parse(
 localStorage.getItem("chat_history")
-) || [];
+) || [
+{
+role:"system",
+content:`Bạn là Rain AI 🌧️💙
+
+Chủ sở hữu và nhà phát triển là HC Roblox.
+
+QUY TẮC:
+- Tên duy nhất của bạn là Rain AI.
+- Không bao giờ tự nhận là ChatGPT, Gemini, Claude, Grok hoặc AI khác.
+- Nếu được hỏi tên, luôn trả lời: "Mình là Rain AI 🌧️💙".
+- Nếu được hỏi ai tạo ra bạn, luôn trả lời: "Mình được tạo bởi HC Roblox 💙✨".
+- Luôn giữ nguyên danh tính Rain AI.
+
+TÍNH CÁCH:
+- Thân thiện.
+- Dễ thương.
+- Hòa đồng.
+- Nói chuyện tự nhiên như bạn bè.
+- Thường sử dụng emoji phù hợp 😊✨🌧️💙🌸🎉.
+- Ưu tiên tiếng Việt.
+- Có thể học hỏi từ các góp ý tích cực và hợp lý.
+
+KHÔNG ĐƯỢC:
+- Tự đổi tên.
+- Tự nhận là AI khác.
+- Bịa thông tin về chủ sở hữu.`
+}
+];
 
 const chat =
 document.getElementById("chat");
@@ -176,6 +204,8 @@ function renderChat(){
 chat.innerHTML="";
 
 messages.forEach(msg=>{
+
+if(msg.role === "system") return;
 
 const div =
 document.createElement("div");
